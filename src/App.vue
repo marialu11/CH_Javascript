@@ -6,6 +6,8 @@ const kernel = ref(10 + 9)
 
 const instrucciones = ref(new Array(10).fill("none"))
 const memoriaPrincipal = ref(new Array(memoria_inicio.value));
+const variables = ref(new Array(10).fill("none"));
+const etiquetas = ref(new Array(10).fill("none"))
 
 const cargar = () => {
     const input = document.createElement("input");
@@ -20,11 +22,28 @@ const cargar = () => {
                 const lines = text.toString().split("\n");
                 //console.log(lines)
                 instrucciones.value = []
-                lines.forEach(element => {
-                    if(element =="nueva"){
-                        console.log(element)
+                variables.value = []
+                etiquetas.value = []
+                lines.forEach(element => { 
+                    element = element.trim();
+                    if(element.includes("nueva")){
+                        let a = element.split(" ")
+                        if (a[1] == ""){
+                            variables.value.push(a[2]);
+                        }
+                        else{
+                            variables.value.push(a[1])
+                        }
                     }
-                    instrucciones.value.push(element)
+                    if(element.includes("etiqueta")){
+                        let a = element.split(" ")
+                        etiquetas.value.push(a[1]);
+                    }
+                    if(element.includes("//") == false && element != "")
+                    {
+                        console.log(element)
+                        instrucciones.value.push(element)
+                    }
                 });
                 for (let i = 1; i<= kernel.value; i++) {
                     memoriaPrincipal.value[i] = "--** CH MAQUINA **--"
@@ -88,7 +107,21 @@ const cargar = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(cont,index) in instrucciones" :key="index">
+                                <tr v-for="(cont,index) in variables" :key="index">
+                                    <th scope="row">{{index}}</th>
+                                    <td>{{cont}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class=" mt-3 table table-dark table-striped-columns" id="tablapmas">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(cont,index) in etiquetas" :key="index">
                                     <th scope="row">{{index}}</th>
                                     <td>{{cont}}</td>
                                 </tr>
