@@ -24,31 +24,32 @@ const cargar = () => {
                 instrucciones.value = []
                 variables.value = []
                 etiquetas.value = []
-                lines.forEach(element => { 
+                lines.forEach(element => {
                     element = element.trim();
-                    if(element.includes("nueva")){
-                        let a = element.split(" ")
-                        if (a[1] == ""){
-                            variables.value.push(a[2]);
-                        }
-                        else{
-                            variables.value.push(a[1])
-                        }
-                    }
-                    if(element.includes("etiqueta")){
-                        let a = element.split(" ")
-                        etiquetas.value.push(a[1]);
-                    }
-                    if(element.includes("//") == false && element != "")
-                    {
-                        console.log(element)
+                    const diccionario = ["nueva", "cargue", "almacene", "lea", "sume", "reste", "multiplique", "divida", "potencia",
+                        "modulo", "concatene", "elimine", "extraiga", "Y", "O", "NO", "muestre", "imprima", "retorne", "vaya", "vayasi", "etiqueta"]
+                    if (diccionario.includes(element.split(" ")[0])) {
                         instrucciones.value.push(element)
+                        if (element.split(" ")[0] == "nueva") {
+                            if (element.split(" ")[1] == "") {
+                                variables.value.push(element.split(" ")[2])
+                            }
+                            else {
+                                variables.value.push(element.split(" ")[1])
+                            }
+                        }
+                        if(element.split(" ")[0] == "variable"){
+                            variables.value.push(element.split(" ")[1])
+                        }
+                        if(element.split(" ")[0] == "etiqueta"){
+                            etiquetas.value.push(element.split(" ")[1])
+                        }
                     }
                 });
-                for (let i = 1; i<= kernel.value; i++) {
+                for (let i = 1; i <= kernel.value; i++) {
                     memoriaPrincipal.value[i] = "--** CH MAQUINA **--"
                 }
-                for (let i = 0; i< instrucciones.value.length; i++){
+                for (let i = 0; i < instrucciones.value.length; i++) {
                     memoriaPrincipal.value[i + kernel.value + 1] = instrucciones.value[i]
                 }
             }
@@ -174,6 +175,6 @@ const cargar = () => {
 }
 
 .navbar a:hover {
-    color:pink;
+    color: pink;
 }
 </style>
