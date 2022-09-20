@@ -38,10 +38,10 @@ const cargar = () => {
                                 variables.value.push(element.split(" ")[1])
                             }
                         }
-                        if(element.split(" ")[0] == "variable"){
+                        if (element.split(" ")[0] == "variable") {
                             variables.value.push(element.split(" ")[1])
                         }
-                        if(element.split(" ")[0] == "etiqueta"){
+                        if (element.split(" ")[0] == "etiqueta") {
                             etiquetas.value.push(element.split(" ")[1])
                         }
                     }
@@ -77,14 +77,23 @@ const cargar = () => {
             </div>
         </nav>
         <div class="row">
+            <!--COMUMNA UNO-->
             <div class="col">
-                <h3>Kernel</h3>
-                <input type="number" v-model="kernel">
-                <h3>Memoria principal</h3>
-                <input type="number" v-model="memoria_inicio">
+                <div class="border border-dark p-3">
+                    <label for="kernel">Kernel
+                        <input class="small" type="number" v-model="kernel" id="kernel">
+                    </label>
+                    <br>
+                    <br>
+                    <label for="m_principal" class="">Memoria p.
+                        <input class="small" type="number" v-model="memoria_inicio" id="m_principal">
+                    </label>
+                </div>
+
                 <div class="row py-3">
+                    <!--SUBCOMUMNA UNO-->
                     <div class="col">
-                        <table class="table table-dark table-striped-columns" id="tablapmas">
+                        <table class="table table-striped table-hover border border-dark" id="tablapmas">
                             <thead>
                                 <tr>
                                     <th scope="col">Dirección</th>
@@ -99,12 +108,14 @@ const cargar = () => {
                             </tbody>
                         </table>
                     </div>
+
+                    <!--SUBCOMUMNA DOS-->
                     <div class="col">
-                        <table class="table table-dark table-striped-columns" id="tablapmas">
+                        <table class="table table-striped table-hover border border-dark" id="tablapmas"> <!--table table-dark table-striped-columns-->
                             <thead>
                                 <tr>
-                                    <th scope="col">Dirección</th>
-                                    <th scope="col">Contenido</th>
+                                    <th scope="col">Pos</th>
+                                    <th scope="col">Variables</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,11 +125,11 @@ const cargar = () => {
                                 </tr>
                             </tbody>
                         </table>
-                        <table class=" mt-3 table table-dark table-striped-columns" id="tablapmas">
+                        <table class="mt-3 table table-striped table-hover border border-dark" id="tablapmas">
                             <thead>
                                 <tr>
-                                    <th scope="col">Dirección</th>
-                                    <th scope="col">Contenido</th>
+                                    <th scope="col">Pos</th>
+                                    <th scope="col">Etiquetas</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -131,13 +142,24 @@ const cargar = () => {
                     </div>
 
                 </div>
+            </div>
 
-            </div>
+            <!--COMUMNA DOS-->
             <div class="col">
-                <h3>Col 3</h3>
+                <h3>Col 2</h3>
+                <div>
+                    <img src="imagenes/screen.jpg" height="290" width="350" />
+                </div>
+                <br>
+                <br>
+                <div>
+                    <img src="imagenes/impresora_rec.jpg" height="300" width="350" />
+                </div>
             </div>
-            <div class="col">
-                <table class="table table-dark table-striped">
+
+            <!--COMUMNA TRES-->
+            <div class="col ps-5">
+                <table class="table table-striped table-hover border border-dark">
                     <thead>
                         <tr>
                             <th scope="col">Dirección</th>
@@ -153,7 +175,6 @@ const cargar = () => {
                 </table>
             </div>
         </div>
-
     </div>
 </template>
     
@@ -176,5 +197,16 @@ const cargar = () => {
 
 .navbar a:hover {
     color: pink;
+}
+.navbar a:focus {
+    color: lightblue;
+}
+
+/*.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #E5D1D0; }*/
+
+.small {
+    width: 20%;
 }
 </style>
