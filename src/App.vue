@@ -77,21 +77,24 @@ const cargar = () => {
             </div>
         </nav>
         <div class="row">
-            <!--COMUMNA UNO-->
+            <!--COLUMNA UNO-->
             <div class="col">
-                <div class="border border-dark p-3">
-                    <label for="kernel">Kernel
-                        <input class="small" type="number" v-model="kernel" id="kernel">
-                    </label>
-                    <br>
-                    <br>
-                    <label for="m_principal" class="">Memoria p.
-                        <input class="small" type="number" v-model="memoria_inicio" id="m_principal">
-                    </label>
+                <div class="row border border-dark p-3">
+                    <div class="col">
+                        <label for="kernel">Kernel
+                            <input class="small" type="number" v-model="kernel" id="kernel">
+                        </label>
+                        <br>
+                        <br>
+                        <label for="m_principal" class="">Memoria p.
+                            <input class="small" type="number" v-model="memoria_inicio" id="m_principal">
+                        </label>
+                    </div>
+                    <div class="row"></div>
                 </div>
 
                 <div class="row py-3">
-                    <!--SUBCOMUMNA UNO-->
+                    <!--SUBCOLUMNA UNO-->
                     <div class="col">
                         <table class="table table-striped table-hover border border-dark" id="tablapmas">
                             <thead>
@@ -109,9 +112,10 @@ const cargar = () => {
                         </table>
                     </div>
 
-                    <!--SUBCOMUMNA DOS-->
+                    <!--SUBCOLUMNA DOS-->
                     <div class="col">
-                        <table class="table table-striped table-hover border border-dark" id="tablapmas"> <!--table table-dark table-striped-columns-->
+                        <table class="table table-striped table-hover border border-dark" id="tablapmas">
+                            <!--table table-dark table-striped-columns-->
                             <thead>
                                 <tr>
                                     <th scope="col">Pos</th>
@@ -144,11 +148,10 @@ const cargar = () => {
                 </div>
             </div>
 
-            <!--COMUMNA DOS-->
-            <div class="col">
-                <h3>Col 2</h3>
+            <!--COLUMNA DOS-->
+            <div class="col px-4">
                 <div>
-                    <img src="imagenes/screen.jpg" height="290" width="350" />
+                    <img src="imagenes/screen.jpg" height="250" width="335" />
                 </div>
                 <br>
                 <br>
@@ -157,8 +160,8 @@ const cargar = () => {
                 </div>
             </div>
 
-            <!--COMUMNA TRES-->
-            <div class="col ps-5">
+            <!--COLUMNA TRES-->
+            <div class="col">
                 <table class="table table-striped table-hover border border-dark">
                     <thead>
                         <tr>
