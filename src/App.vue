@@ -24,6 +24,8 @@ const diccionario = ["nueva", "cargue", "almacene", "lea", "sume", "reste", "mul
 
 const cargar = () => {
     const input = document.createElement("input");
+    imprimirTexto.value = "";
+    imprimirTextoi.value = "";
     input.type = "file";
     input.onchange = (e) => {
         const file = e.target?.files[0];
@@ -77,18 +79,18 @@ const ejecutar = (i) => {
             break;
 
         case "nueva":
-        
-            if (instrucciones.value[i].split(" ")[2].toLowerCase == "c") {
+            if (instrucciones.value[i].split(" ")[2].toLowerCase() == "c") {
                 nombresValores.value[instrucciones.value[i].split(" ")[1]] = "" + instrucciones.value[i].split(" ")[3]
             }
-            else if (instrucciones.value[i].split(" ")[2].toLowerCase == "i") {
+            else if (instrucciones.value[i].split(" ")[2].toLowerCase() == "i") {
                 console.log("entro")
                 nombresValores.value[instrucciones.value[i].split(" ")[1]] = Number(instrucciones.value[i].split(" ")[3])
             }
-            else if (instrucciones.value[i].split(" ")[2].toLowerCase == "r") {
+            else if (instrucciones.value[i].split(" ")[2].toLowerCase() == "r") {
                 nombresValores.value[instrucciones.value[i].split(" ")[1]] = parseFloat(instrucciones.value[i].split(" ")[3])
             }
             else {
+                console.log("Error")
                 nombresValores.value[instrucciones.value[i].split(" ")[1]] = instrucciones.value[i].split(" ")[3] == 1 ? true : false
             }
             break;
@@ -323,15 +325,15 @@ function pasoPaso() {
 
             <!--COLUMNA DOS-->
             <div class="col px-4">
-                <div class="pantalla">
+                <div id="pantalla">
                     <img src="imagenes/screen.jpg" height="250" width="335" />
-                    <textarea class="t_pantalla" v-model="imprimirTexto"></textarea>
+                    <textarea id="t_pantalla" v-model="imprimirTexto"></textarea>
                 </div>
                 <br>
                 <br>
-                <div class="impresora">
+                <div id="impresora">
                     <img src="imagenes/impresora_rec.jpg" height="300" width="350" />
-                    <textarea class="t_impresora" v-model="imprimirTextoi"></textarea>
+                    <textarea id="t_impresora" v-model="imprimirTextoi"></textarea>
                 </div>
             </div>
 
@@ -357,12 +359,12 @@ function pasoPaso() {
 </template>
     
 <style scoped>
-.pantalla {
+#pantalla {
     position: relative;
     display: inline-block;
 }
 
-.t_pantalla {
+#t_pantalla {
     position: absolute;
     top: 10px;
     left: 5%;
@@ -382,7 +384,7 @@ function pasoPaso() {
 .t_impresora {
     position: absolute;
     top: 9px;
-    left: 27%;
+    left: 2715%;
     font-family: verdana;
     font-size: 22px;
     color: black;
